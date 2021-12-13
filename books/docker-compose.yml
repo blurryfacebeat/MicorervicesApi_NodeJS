@@ -1,0 +1,24 @@
+version: '3.4'
+
+#Сеть
+networks:
+  #Название сети
+  mynetwork:
+    #Доступ к сети
+    external:
+      name: gateway_mynetwork
+
+services:
+  #Название сервиса
+  books:
+    #Название контейнера
+    container_name: books
+    #Сборка контейнера
+    build:
+      #Путь к Dockerfile для сборки
+      context: ./
+    ports:
+      - "3001:3001"
+    #Название сети
+    networks:
+      - mynetwork

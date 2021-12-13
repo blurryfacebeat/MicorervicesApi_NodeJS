@@ -1,0 +1,18 @@
+version: '3.4'
+
+#Сеть
+networks:
+  mynetwork:
+    driver: bridge
+
+services:
+  #Название сервиса
+  gateway:
+    #Название контейнера
+    image: nginx:latest
+    ports:
+      - 80:80
+    networks:
+      - mynetwork
+    volumes:
+      - ./config/nginx:/etc/nginx

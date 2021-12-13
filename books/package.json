@@ -1,0 +1,26 @@
+{
+  "name": "books",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "author": "Morozov Vyacheslav <blurryfacebeat@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.13",
+    "prettier": "^2.4.1"
+  },
+  "dependencies": {
+    "axios": "^0.21.4",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.7"
+  }
+}
