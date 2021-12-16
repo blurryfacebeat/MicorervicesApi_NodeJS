@@ -7,6 +7,9 @@ networks:
     #Доступ к сети
     external:
       name: gateway_mynetwork
+  rabbit_net:
+    external:
+      name: gateway_rabbit_net
 
 services:
   #Название сервиса
@@ -17,8 +20,12 @@ services:
     build:
       #Путь к Dockerfile для сборки
       context: ./
+    environment:
+      NODE_ENV: production
+      AMQP_URL: amqp://guest:guest@rabbitmq:5672
     ports:
       - "3000:3000"
-    #Название сети
+    #Название сетей в которых работает контейнер
     networks:
       - mynetwork
+      - rabbit_net

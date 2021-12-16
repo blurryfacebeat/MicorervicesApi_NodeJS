@@ -2,6 +2,9 @@ version: '3.4'
 
 #Сеть
 networks:
+  # Сеть для rabbitmq
+  rabbit_net:
+    driver: bridge
   mynetwork:
     driver: bridge
 
@@ -16,3 +19,18 @@ services:
       - mynetwork
     volumes:
       - ./config/nginx:/etc/nginx
+  # Сервис для rabbitmq
+  rabbitmq:
+    # Docker образ, на основе которого создается контейнер
+    image: rabbitmq:3-management-alpine
+    # Название контейнера
+    container_name: rabbitmq
+    ports:
+      - 5673:5672
+      - 15673:15672
+    # Сеть, в которой работает контейнер
+    networks:
+      - rabbit_net
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest

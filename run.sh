@@ -1,4 +1,7 @@
+docker system prune -a && docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
+
 # запустить контейнеры в фоне
+(cd gateway && docker-compose up -d rabbitmq)
 (cd auth && docker-compose up -d)
 (cd books && docker-compose up -d)
 (cd gateway && docker-compose up -d gateway)
